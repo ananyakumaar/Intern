@@ -1,0 +1,14 @@
+from googletrans import Translator
+import streamlit as st
+
+translator = Translator()
+st.title("Language Translator")
+text = st.text_input("Enter text to translate:")
+dest = st.text_input("Enter language(fr,hi,es,de,ta,ja,gu,te,ko):")
+
+if text:
+    try:
+        translated = translator.translate(text, dest)
+        st.write("Translated text:", translated.text)
+    except Exception as e:
+        st.error(f"Translation failed: {e}")
